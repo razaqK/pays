@@ -1,0 +1,64 @@
+version: '2'
+services:
+  db:
+      image: mysql:5.6
+      container_name: mysqldb
+      environment:
+          # with mysql
+          MYSQL_DATABASE: balance
+          MYSQL_USER: root
+          MYSQL_ROOT_PASSWORD: root
+      volumes:
+          - ./data/mysql:/var/lib/mysql
+      ports:
+          - "3307:3306"
+      networks:
+       external_network:
+         aliases:
+            - mysqldb
+  redis:
+    image: redis:3.2
+    container_name: redisdb
+    volumes:
+        - ./docker/data/redis:/data
+    ports:
+        - "6379:6379"
+    command: redis-server --appendonly yes
+    networks:
+      external_network:
+          aliases:
+            - redisdb
+  elasticsearch:
+    image: elasticsearch:2.4.4
+    container_name: elasticsearch
+    volumes:
+        - ./data/elasticsearch:/usr/share/elasticsearch/data
+    ports:
+        - "9200:9200"
+    networks:
+          external_network:
+              aliases:
+                - elasticsearch
+  rabbitmq:
+    image: rabbitmq:3.6.6
+    container_name: rabbitmq
+    volumes:
+      - ./data/rabbitmq:/etc/rabbitmq/
+    ports:
+      - "15672:15672"
+      - "4369:4369"
+      - "5672:5672"
+      - "25672:25672"
+      - "5671:5671"
+    environment:
+          RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+          RABBITMQ_DEFAULT_USER: "rabbitmq"
+          RABBITMQ_DEFAULT_PASS: "rabbitmq"
+          RABBITMQ_DEFAULT_VHOST: "/"
+    networks:
+          external_network:
+              aliases:
+                - rabbitmq
+
+networks:
+  external_network:

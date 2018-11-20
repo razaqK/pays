@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+bin/log
+bin/data
+bin/rabbitmq.config
+bin/definitions.json

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  balance:
+    build: .
+    container_name: balance
+    ports:
+      - 85:80
+    env_file:
+      - ./.env
+    tty: true
+    volumes:
+      - .:/src
+      - .:/usr/src/app
+      - ./bin/log/balance:/var/log/application/balance
+    networks:
+      - servers_external_network
+      - docker-zipkin-master_default
+networks:
+  servers_external_network:
+    external: true
+  docker-zipkin-master_default:
+    external: true

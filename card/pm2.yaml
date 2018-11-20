@@ -1,0 +1,9 @@
+apps:
+  - script   : app.js
+    instances: 1
+    exec_mode: cluster
+    watch  : true
+    ignore_watch: ["./bin", "./.idea", "./.git", "./node_modules"]
+    watch_options: {followSymlinks: false}
+    env    :
+      NODE_PATH: .

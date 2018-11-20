@@ -1,0 +1,22 @@
+version: '3'
+services:
+  card:
+    build: .
+    container_name: card
+    ports:
+      - 87:80
+    env_file:
+      - ./.env
+    tty: true
+    volumes:
+      - .:/src
+      - .:/usr/src/app
+      - ./bin/log/card:/var/log/application/card
+    networks:
+      - servers_external_network
+      - docker-zipkin-master_default
+networks:
+  servers_external_network:
+    external: true
+  docker-zipkin-master_default:
+    external: true

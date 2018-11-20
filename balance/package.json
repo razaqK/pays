@@ -1,0 +1,43 @@
+{
+  "name": "balance-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "pm2 kill && pm2-docker start pm2.yaml",
+    "test": "NODE_PATH=. NODE_ENV=test mocha"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "amqplib": "^0.5.2",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "bookshelf": "^0.10.3",
+    "bookshelf-soft-delete": "^4.0.0",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.3",
+    "express-validation": "^1.0.2",
+    "express-validator": "^5.0.3",
+    "express-winston": "^2.6.0",
+    "joi": "^10.3.4",
+    "knex": "^0.12.9",
+    "knex-migrate": "^1.5.1",
+    "kor-redis": "^1.0.8",
+    "mysql": "^2.13.0",
+    "npm": "^6.4.1",
+    "sha512": "0.0.1",
+    "winston": "^2.4.4",
+    "zipkin": "^0.14.3",
+    "zipkin-context-cls": "^0.14.2",
+    "zipkin-instrumentation-axios": "^0.1.0",
+    "zipkin-instrumentation-express": "^0.14.3",
+    "zipkin-transport-http": "^0.14.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
+  }
+}

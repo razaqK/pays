@@ -1,0 +1,22 @@
+version: '3'
+services:
+  transfer:
+    build: .
+    container_name: transfer
+    ports:
+      - 86:80
+    env_file:
+      - ./.env
+    tty: true
+    volumes:
+      - .:/src
+      - .:/usr/src/app
+      - ./bin/log/transfer:/var/log/application/transfer
+    networks:
+      - servers_external_network
+      - docker-zipkin-master_default
+networks:
+  servers_external_network:
+    external: true
+  docker-zipkin-master_default:
+    external: true
