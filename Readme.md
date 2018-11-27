@@ -1,4 +1,6 @@
- ## Microservices for card, balance and transfer ##
+ ## Example of distributed tracing in Microservices
+ 
+ #### Services includes card, balance and transfer
  
  #### Using Docker (Running for the first time) ####
  - cd to servers and run `docker-compose up`
